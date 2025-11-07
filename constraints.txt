@@ -1,0 +1,250 @@
+importance of null values
+missing/inapproriate/unknown
+
+create table students10
+(
+rollno varchar2(20),
+name varchar2(20),
+phno integer
+);
+
+desc students10
+
+insert into students10 values('24P11CS171','Yaswanth',null);
+
+insert into students10 values('24P11CS164',null,null);
+
+select * from students10;
+
+update students10
+set phno=8115645644
+where rollno='24P11CS171';
+
+update students10
+set sname='Phani'
+where rollno='24P11CS164';
+
+select * from students10;
+
+constraints
+1) not null
+create table student
+(
+sid integer not null,
+name varchar2(20) not null,
+marks integer
+);
+
+desc student
+insert into student values(null,'ravi',50);
+insert into student values(501,null,50);
+insert into student values(501,'ravi',null);
+insert into student values(501,'ravi',50);
+select * from student;
+
+delete from student
+where sid=501;
+
+
+insert into student values(501,'ravi',null);
+insert into student values(502,'padma',60);
+insert into student values(503,'suma',null);
+insert into student values(504,'uday',80);
+
+select * from student;
+4 rows
+
+syntax of is null/is not null operator
+select colname from tablename
+where colname is null/is not null
+
+Find the name of students whose marks are empty/null.
+select name from student where marks is null;
+name
+ravi
+suma
+Find the name of students whose marks are not empty/null.
+select name from student where marks is not null;
+name
+padma
+uday
+
+2) unique
+Create table student20
+(
+Rollno integer,
+Name varchar2(20),
+Marks integer,
+Unique(rollno));
+
+desc student20
+
+insert into student20 values(501,'padma',50);
+insert into student20 values(501,'padma',50);
+insert into student20 values(null,'padma',50);
+insert into student20(Marks,Rollno,Name) values(60,502,'ooha');
+insert into student20 values(:Rollno,:Name,:Marks);
+
+3) check
+Create table student30
+(
+Rno integer,
+Name varchar2(20),
+Marks integer,
+Check(marks<101));
+
+insert into student30 values(501,'ravi',null);
+insert into student30 values(502,'suma',60);
+insert into student30 values(503,'geetha',120);
+insert into student30 values(504,'ramu',0);
+insert into student30 values(502,'suma',60);
+select * from student30;
+
+4) primary key
+Create table student40
+(
+Rno integer,
+Name varchar2(20),
+Marks integer,
+Primary key(rno));
+
+desc student40
+
+insert into student40 values(501,'hema',50);
+insert into student40 values(501,'hema',50);
+insert into student40 values(null,'hema',50);
+
+Create table student80
+(
+Rno integer,
+Name varchar2(20),
+Marks integer,
+Primary key(Rno,Name));
+
+desc student80
+
+insert into student80 values(501,'hema',50);
+insert into student80 values(501,'hema',50);
+insert into student80 values(501,'geetha',50);
+insert into student80 values(502,'geetha',50);
+
+
+
+
+
+
+
+
+Create table student40
+(
+Rno integer,
+Name varchar2(20),
+Marks integer,
+Primary key(rno));
+
+desc student40
+
+insert into student40 values(501,'hema',50);
+
+5) foreign key
+Create table studentad
+(
+Rno integer,
+Fee integer,
+Foreign key(Rno) references student40(Rno));
+desc studentad
+
+insert into studentad values(501,60000);
+insert into studentad values(501,7000);
+insert into studentad values(501,null);
+insert into studentad values(null,null);
+insert into studentad values(502,60000);
+
+delete from student40
+where Rno=501;
+
+
+6) default
+Create table students90
+(
+Rno integer,
+Name varchar2(20),
+Gender char(1) default ‘F’,
+Marks integer);
+
+desc students90
+insert into students90 values(501,'suma',default,60);
+insert into students90 values(502,'geetha',default,50);
+insert into students90 values(503,'hari','M',70);
+insert into students90 values(504,'uday','M',40);
+
+select * from students90;
+
+
+Sailors(sid:integer,name:string, age:real,rating:integer)
+Create table sailors
+(
+sid integer primary key,
+name varchar2(30),
+age number(3,1),
+rating integer
+);
+boats(bid:integer,bname:string,bcolor:string)
+create table boats
+(
+bid integer primary key,
+bname varchar2(20),
+bcolor varchar2(20)
+);
+
+
+reserves(sid:integer,bid:integer,rdate:date)
+create table reserves
+(
+sid integer,
+bid integer,
+rdate date,
+foreign key(sid) references sailors(sid),
+foreign key(bid) references boats(bid)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

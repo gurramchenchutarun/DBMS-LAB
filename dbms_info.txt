@@ -1,0 +1,15 @@
+Data is an unprocessed set of inputs, which is not self-explanatory. We need to comprehend the idea of data. Data is a collection of facts about the object of interest. For e.g. data about a student would include information like name, address, roll no, subjects, marks etc. Software Applications need to store data as it is required to answer questions like e.g. how many students have scored above 90? Data is also required to convey a story e.g. how a student is categorized as Top Performer?
+
+Data is crude, simply a bunch of realities which without anyone else doesn't pass on anything. We need to comprehend designs between genuine information and give it a significance. This is called information which causes us with answers to questions like who, when, what, where and so forth. Union of data and information drives us to address the how question and take business choices. This is referred to as Knowledge
+
+Data is stored in flat files and can be accessed using any programming language. The file-based approach suffers following problems:
+
+Dependency of program on physical structure of data
+
+Complex process to fetch data
+
+Loss of data on simultaneous access
+
+Inability to give access based on record (Security)
+
+Data redundancy
